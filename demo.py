@@ -57,6 +57,9 @@ new_states = states.set_index('name')
 
 states.set_index('name',inplace=True)
 
+print( '\nStates after index set:')
+print(states)
+
 #%%
 
 #
@@ -66,6 +69,8 @@ states.set_index('name',inplace=True)
 
 pop = states['pop']
 
+print( '\nPopulation:' )
+print( pop )
 print( '\nPop is a Series object:', type(pop) )
 print( '\nIndex:', list(pop.index) )
 
