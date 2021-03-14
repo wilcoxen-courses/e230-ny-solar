@@ -44,18 +44,10 @@ print( '\nIndex (rows):', list(states.index) )
 #%%
 
 #
-#  Construct a new DataFrame that uses the names as the 
-#  index.
+#  Revise the DataFrame to use the names as the index.
 #
 
-new_states = states.set_index('name')
-
-#
-#  Alternatively, change the original DataFrame in place. Note the 
-#  absence of an equals sign.
-#
-
-states.set_index('name',inplace=True)
+states = states.set_index('name')
 
 print( '\nStates after index set:')
 print(states)
@@ -123,7 +115,7 @@ print(normed2)
 #
 
 low_to_high = normed['med_pers_inc'].sort_values()
-low_to_high = round(low_to_high,2)
+low_to_high = low_to_high.round(1)
 
 #
 #  Print the normalized incomes rounded to 2 places.
@@ -137,5 +129,12 @@ print( low_to_high )
 #  integers starting at 0.
 #
 
-print( '\nStates with the lowest median personal income:')
+print( '\nStates with the lowest median personal income, relative to PA:')
 print( low_to_high.iloc[ 0:10] )
+
+#
+#  print the top 5
+#
+
+print( '\nStates with the highest median personal income, relative to PA:')
+print( low_to_high.iloc[ -5: ] )
