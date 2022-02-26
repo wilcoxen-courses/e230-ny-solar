@@ -1,24 +1,24 @@
 # Exercise: Residential Solar in NY
 
-### Summary
+## Summary
 
 This exercises explores data on residential solar installations in New York by county. However, the main purpose is really to illustrate some key features of the `pandas` module.
 
-### Input Data
+## Input Data
 
-The input data is contained in **res_solar_by_county.csv**. It contains information on completed residential solar installations in New York State between 2000 and 2019. It has five fields: `"county"`; `"projects"`, the number of installations in the county; `"total_cost"`, the total cost of all the installations; `"total_incentive"`, the total subsidy provided by New York State; and `"total_kw"`, the total capacity built, in kilowatts. Note that `"total_cost"`, `"total_incentive"` and `"total_kw"` are sums over all the projects in the corresponding county.
+The input data is contained in **res_solar_by_county.csv**. It contains information on completed residential solar installations in New York State between 2000 and 2019. It has five fields: `"County"`; `"projects"`, the number of installations in the county; `"total_cost"`, the total cost of all the installations; `"total_incentive"`, the total subsidy provided by New York State; and `"total_kw"`, the total capacity built, in kilowatts. Note that `"total_cost"`, `"total_incentive"` and `"total_kw"` are sums over all the projects in the corresponding county.
 
-### Deliverables
+## Deliverables
 
 Please prepare a script called **solar.py** that carries out the steps described below.
 
-### Instructions
+## Instructions
 
 1. Import the `pandas` module as `pd`
 
 1. By default, Pandas limits the number of rows it displays when a dataframe and or series is printed. That's convenient for very large datasets when no one would want to see every row but we're going to override it here. Set the maximum number of rows to print to `None` as shown below to remove the limit.
 
-    ```
+    ```python
     pd.set_option('display.max_rows',None)
     ```
 
@@ -48,7 +48,7 @@ Please prepare a script called **solar.py** that carries out the steps described
 
 1. Create a variable called `means` that is the result of calling the `.div()` method on `solar` using the arguments `count` and `axis="index"`. That will divide each column of `solar` by the `count` Series.
 
-    If this is the first time you've used Pandas, the result might seem almost miraculous: a single short line will create a whole new dataframe where all of the columns in the original dataframe have been divided by the number of projects in the corresponding county.
+    This is a good demonstration of the power of the Pandas: a single short line can create a whole new dataframe where all of the columns in the original dataframe have been divided by the number of projects in the corresponding county.
 
     That will be true even if the rows of `count` and `solar` are not in the same order: Pandas will automatically match, or "align", the indexes of `count` and `solar` during the calculation. If you want to check this, try the same calculation dividing by `high_to_low` instead of `count`. Even though the rows of `high_to_low` are in a different order from the rows of `solar`, the result will be exactly the same.
 
@@ -56,7 +56,7 @@ Please prepare a script called **solar.py** that carries out the steps described
 
 1. Print an appropriate heading and then print `means`.
 
-1. Now we'll compare the means for all the counties to those for Onondaga. As a first step, create a variable called `onondaga_row` that is equal to the result of using the selector `.loc['Onondaga']` on `means` to pull out the Onondaga row. 
+1. Now we'll compare the means for all the counties to those for Onondaga. As a first step, create a variable called `onondaga_row` that is equal to the result of using the selector `.loc['Onondaga']` on `means` to pull out the Onondaga row.
 
 1. Now create a variable called `relative` by dividing `means` by `onondaga_row` using a plain division sign. The result will be a new dataframe giving each county's mean variables as ratios to those for Onondaga. For example, the ratio for mean total cost in the Bronx will be 0.82, or 82%, of the mean cost in Onondaga. The `.div()` method and the `axis` keyword are not needed in this context; see the tips section for an explanation.
 
@@ -69,11 +69,11 @@ ascending order using its `.sort_values()` method.
 
 1. There's no Markdown deliverable for this assignment but it's interesting to note that there are large differences in the mean incentive across counties. That's partially, but not completely, explained by differences in the average size of the projects.
 
-### Submitting
+## Submitting
 
 Once you're happy with everything and have committed all of the changes to your local repository, please push the changes to GitHub. At that point, you're done: you have submitted your answer.
 
-### Tips
+## Tips
 
 + Reading the file and setting the index are done as two separate steps here to illustrate how they work. However, it's possible to do both at once by adding `index_col="County"` to the call to `read_csv()`. That's often a very good idea.
 

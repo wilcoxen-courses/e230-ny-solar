@@ -1,9 +1,9 @@
-#! /bin/python3
-#  Spring 2020 (PJW)
+"""
+demo.py
+Spring 2022 PJW
 
-# 
-#  Demonstrate some basic features of Pandas
-#
+Demonstrate some basic features of Pandas.
+"""
 
 import pandas as pd
 
@@ -44,10 +44,18 @@ print( '\nIndex (rows):', list(states.index) )
 #%%
 
 #
-#  Revise the DataFrame to use the names as the index.
+#  Construct a new DataFrame that uses the names as the
+#  index.
 #
 
-states = states.set_index('name')
+new_states = states.set_index('name')
+
+#
+#  Alternatively, change the original DataFrame in place. Note the
+#  absence of an equals sign.
+#
+
+states.set_index('name',inplace=True)
 
 print( '\nStates after index set:')
 print(states)
@@ -76,7 +84,7 @@ print( '\nData for selected states:')
 print( pop[some_states]/1e6 )
 
 #
-#  Get a single population; note that it's a scalar, not 
+#  Get a single population; note that it's a scalar, not
 #  a Series.
 #
 
@@ -85,7 +93,7 @@ print( "\nFlorida's population:", pop['Florida']/1e6 )
 #%%
 
 #
-#  Get a row. Use .loc[] to indicate that we want to pick out a 
+#  Get a row. Use .loc[] to indicate that we want to pick out a
 #  row using the index.
 #
 
@@ -94,7 +102,7 @@ print( '\nPA row:')
 print(pa_row)
 
 #
-#  Normalize the columns in states by the PA row. Multiply by 
+#  Normalize the columns in states by the PA row. Multiply by
 #  100 to convert things to percentages of PA. The two approaches
 #  below are equivalent.
 #
@@ -110,12 +118,12 @@ print(normed2)
 
 #%%
 #
-#  Pick out normalized median personal income and sort it from low 
-#  to high. Then round it to 2 places.
+#  Pick out normalized median personal income and sort it from low
+#  to high. Then round it to 2 places using the .round() method.
 #
 
 low_to_high = normed['med_pers_inc'].sort_values()
-low_to_high = low_to_high.round(1)
+low_to_high = low_to_high.round(2)
 
 #
 #  Print the normalized incomes rounded to 2 places.
@@ -125,12 +133,12 @@ print( '\nMedian personal income relative to PA:')
 print( low_to_high )
 
 #
-#  print the bottom 10 using .iloc[], which picks out rows using 
+#  print the bottom 10 using .iloc[], which picks out rows using
 #  integers starting at 0.
 #
 
 print( '\nStates with the lowest median personal income, relative to PA:')
-print( low_to_high.iloc[ 0:10] )
+print( low_to_high.iloc[ 0:10 ] )
 
 #
 #  print the top 5
