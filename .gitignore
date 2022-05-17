@@ -34,5 +34,5 @@ makefile
 *.zip
 *.csv
 
-! res_solar_by_county.csv
-! state-data.cv
+!res_solar_by_county.csv
+!state-data.cv
