@@ -141,8 +141,15 @@ print( '\nStates with the lowest median personal income, relative to PA:')
 print( low_to_high.iloc[ 0:10 ] )
 
 #
-#  print the top 5
+#  print the top 5, which are at the end
 #
 
 print( '\nStates with the highest median personal income, relative to PA:')
 print( low_to_high.iloc[ -5: ] )
+
+#
+#  alternative: use list indexing:
+#
+    
+print( low_to_high[ -5: ] )
+
