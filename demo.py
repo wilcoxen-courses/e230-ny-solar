@@ -17,13 +17,13 @@ pd.set_option('display.max_rows', None)
 #  Read the file into a DataFrame
 #
 
-states = pd.read_csv('state-data.csv')
+raw_states = pd.read_csv('state-data.csv')
 
 #
 #  Show its type
 #
 
-print( '\nStates is a DataFrame object:', type(states) )
+print( '\nraw_states is a DataFrame object:', type(raw_states) )
 
 #%%
 
@@ -31,15 +31,17 @@ print( '\nStates is a DataFrame object:', type(states) )
 #  What does the DataFrame look like?
 #
 
-print( '\nContents of states:' )
-print(states)
+print( '\nContents of raw_states:' )
+print(raw_states)
+
+#%%
 
 #
 #  Columns and index?
 #
 
-print( '\nColumns:', list(states.columns) )
-print( '\nIndex (rows):', list(states.index) )
+print( '\nColumns:', list(raw_states.columns) )
+print( '\nIndex (rows):', list(raw_states.index) )
 
 #%%
 
@@ -48,14 +50,7 @@ print( '\nIndex (rows):', list(states.index) )
 #  index.
 #
 
-new_states = states.set_index('name')
-
-#
-#  Alternatively, change the original DataFrame in place. Note the
-#  absence of an equals sign.
-#
-
-states.set_index('name',inplace=True)
+states = raw_states.set_index('name')
 
 print( '\nStates after index set:')
 print(states)
@@ -73,6 +68,8 @@ print( '\nPopulation:' )
 print( pop )
 print( '\nPop is a Series object:', type(pop) )
 print( '\nIndex:', list(pop.index) )
+
+#%%
 
 #
 #  Get a subset of pops and print them in millions
@@ -98,8 +95,10 @@ print( "\nFlorida's population:", pop['Florida']/1e6 )
 #
 
 pa_row = states.loc['Pennsylvania']
-print( '\nPA row:')
+print( '\nPA row, returned as a series and printed vertically:')
 print(pa_row)
+
+#%%
 
 #
 #  Normalize the columns in states by the PA row. Multiply by
@@ -132,8 +131,10 @@ low_to_high = low_to_high.round(2)
 print( '\nMedian personal income relative to PA:')
 print( low_to_high )
 
+#%%
+
 #
-#  print the bottom 10 using .iloc[], which picks out rows using
+#  Print the bottom 10 using .iloc[], which picks out rows using
 #  integers starting at 0.
 #
 
@@ -150,6 +151,6 @@ print( low_to_high.iloc[ -5: ] )
 #
 #  alternative: use list indexing:
 #
-    
-print( low_to_high[ -5: ] )
 
+print( '\nUsing list indexing:' )
+print( low_to_high[ -5: ] )
