@@ -26,7 +26,7 @@ Please prepare a script called **solar.py** that carries out the steps described
 
 1. By default, the index of `solar` will be row numbers starting with 0. We'll change it to be the county instead, which is much more useful. To do that, add a line setting `solar` equal to the result of calling the `.set_index()` method on `solar` with the argument `"County"`. See the tips section for a note about how to avoid this step by setting the index during `read_csv()`.
 
-1. Print an appropriate heading and then print the list of columns for `solar`. The columns will be a Pandas Index object; you may want to use `list()` to turn that into a simple list, which will look a little clearer when printed.
+1. Print an appropriate heading and then print the list of column names for `solar`. The column names will be a Pandas Index object; you may want to use `list()` to turn that into a simple list, which will look a little clearer when printed.
 
 1. Print an appropriate heading and then print the index for `solar`. As with the columns, you may want to clean up the output using `list()`.
 
